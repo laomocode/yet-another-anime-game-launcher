@@ -73,25 +73,61 @@ jobs:
           pnpm run format-check
           pnpm run lint
           YAAGL_CHANNEL_CLIENT=hk4ecn node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_hk4ecn.neu
           YAAGL_CHANNEL_CLIENT=hk4eos node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_hk4eos.neu 
           YAAGL_CHANNEL_CLIENT=bh3glb node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_bh3glb.neu
           YAAGL_CHANNEL_CLIENT=hkrpgcn node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_hkrpgcn.neu
           YAAGL_CHANNEL_CLIENT=hkrpgos node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_hkrpgos.neu
           YAAGL_CHANNEL_CLIENT=napcn node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_napcn.neu
           YAAGL_CHANNEL_CLIENT=napos node ./build-app.js
+          # cp dist/Yaagl/resources.neu resources_napos.neu
 
       - name: Tar app
         run: |
-          tar -zcf Yaagl.tar.gz Yaagl.app
-          tar -zcf "Yaagl OS.tar.gz" "Yaagl OS.app"
-          tar -zcf "Yaagl Honkai Global.tar.gz" "Yaagl Honkai Global.app"
+          tar -zcf Yaagl.app.tar.gz Yaagl.app
+          tar -zcf "Yaagl OS.app.tar.gz" "Yaagl OS.app"
+          tar -zcf "Yaagl Honkai Global.app.tar.gz" "Yaagl Honkai Global.app"
+          tar -zcf "Yaagl HSR.app.tar.gz" "Yaagl HSR.app"
+          tar -zcf "Yaagl HSR OS.app.tar.gz" "Yaagl HSR OS.app"
+          tar -zcf "Yaagl ZZZ.app.tar.gz" "Yaagl ZZZ.app"
+          tar -zcf "Yaagl ZZZ OS.app.tar.gz" "Yaagl ZZZ OS.app"
       - name: Upload artifact - app
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: app
-          path: Yaagl.tar.gz
-      - name: Upload artifact - app-os
+          name: app-gi
+          path: Yaagl.app.tar.gz
+      - name: Upload artifact - app-gi-os
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: app-os
-          path: "Yaagl OS.tar.gz"
+          name: app-gi-os
+          path: "Yaagl OS.app.tar.gz"
+      - name: Upload artifact - app-hsr
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: app-hsr
+          path: "Yaagl HSR.app.tar.gz"
+      - name: Upload artifact - app-hsr-os
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: app-hsr-os
+          path: "Yaagl HSR OS.app.tar.gz"
+      - name: Upload artifact - app-zzz
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: app-zzz
+          path: "Yaagl ZZZ.app.tar.gz"
+      - name: Upload artifact - app-zzz-os
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: app-zzz-os
+          path: "Yaagl ZZZ OS.app.tar.gz"
+      - name: Upload artifact - app-honkai-global
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: app-zzz-os
+          path: "Honkai Global.app.tar.gz"
